@@ -12,8 +12,8 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"><!--非注解处理映射器-->
         <property name="mappings">
             <props>
-                <prop key="/students.action">students</prop>
-                <prop key="/all.action">students1</prop>
+                <prop key="students.action">students</prop>
+                <prop key="all.action">students1</prop>
             </props>
         </property>
     </bean>
@@ -23,10 +23,10 @@
 
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean><!--非注解处理适配器，ctr必须实现org.springframework.web.servlet.mvc.Controller接口-->
 
-    <!--可以使用<mvc:annotation-driven></mvc:annotation-driven>代替下面的注解处理映射器和注解处理适配器，默认加载很多参数绑定方法，例如json转换解析器 -->
+    <!--可以使用<mvc:annotation-driven></mvc:annotation-driven>代替下面的注解处理映射器和注解处理适配器，默认加载很多参数绑定方法，例如json转换解析器
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
-
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
+    <mvc:annotation-driven></mvc:annotation-driven>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

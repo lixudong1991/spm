@@ -6,6 +6,7 @@ import cn.lxd.entity.Student;
 import cn.lxd.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by Tomcat on 2017/9/22.
  */
 @Component
+@Transactional
 public class StudentServiceImpl implements StudentService{
     @Autowired
     private Studentdao studentdao;

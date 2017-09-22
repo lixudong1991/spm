@@ -21,7 +21,7 @@ public class SimpleCtr implements org.springframework.web.servlet.mvc.Controller
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView modelAndView=new ModelAndView();
         modelAndView.addObject("students",studentService.findStByids(null));
-        modelAndView.setViewName("/WEB-INF/views/list.jsp");
+        modelAndView.setViewName("list");
         return modelAndView;
     }
 }
