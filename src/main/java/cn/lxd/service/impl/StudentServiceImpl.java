@@ -1,7 +1,6 @@
 package cn.lxd.service.impl;
 
 import cn.lxd.dao.Studentdao;
-import cn.lxd.entity.StuIds;
 import cn.lxd.entity.Student;
 import cn.lxd.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,27 +14,39 @@ import java.util.List;
  */
 @Component
 @Transactional
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
     @Autowired
     private Studentdao studentdao;
 
     @Override
-    public Student findStuByid(int id) throws Exception {
-        return studentdao.findStuByid(id);
+    public List<Student> findAllStudent() {
+        try {
+            return studentdao.findStByids(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
-    public void insertStu(Student student) throws Exception {
-        studentdao.insertStu(student);
+    public void changeStudent(Integer id, Student student) {
+        try {
+            if (student != null && id != null) {
+                student.setId(id);
+                studentdao.updateStubyId(student);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public int findStuCount(Student student) throws Exception {
-        return studentdao.findStuCount(student);
-    }
-
-    @Override
-    public List<Student> findStByids(StuIds stuIds) throws Exception {
-        return studentdao.findStByids(stuIds);
+    public Student findStudentbyId(int id) {
+        try {
+            return studentdao.findStuByid(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

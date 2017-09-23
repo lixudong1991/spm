@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
  * Created by Tomcat on 2017/9/22.
  */
 @Controller("students")
-public class SimpleCtr implements org.springframework.web.servlet.mvc.Controller{
+public class SimpleCtr implements org.springframework.web.servlet.mvc.Controller {
     @Autowired
     private StudentService studentService;
 
 
     @Override
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("students",studentService.findStByids(null));
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("students", studentService.findAllStudent());
         modelAndView.setViewName("list");
         return modelAndView;
     }

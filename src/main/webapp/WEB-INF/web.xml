@@ -6,6 +6,9 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <!--配置POST方式乱码过滤器,GET方式可在tomcat配置文件的8443端口配置中加入URIEncoding="utf-8",还可以对乱码字符串如下重新编码:
+   String username= new String(request.getParamter("userName").getBytes("ISO8859-1"),"utf-8")
+  -->
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

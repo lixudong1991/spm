@@ -38,7 +38,7 @@
         </where>
     </select>
     <select id="findStByids" parameterType="StuIds" resultMap="res">
-        SELECT * FROM studb 
+        SELECT * FROM studb
         <where>
             <if test="ids!=null">
                 <foreach collection="ids" item="it" open="id in(" close=")" separator=",">
@@ -47,4 +47,18 @@
             </if>
         </where>
     </select>
+    <update id="updateStubyId" parameterType="Student">
+        <if test="number!=0 and name !=null and name!=''">
+            UPDATE studb SET number=#{number},name=#{name},age=#{age},sex=#{sex}
+            <if test="birthday!=null">
+                ,birthday=#{birthday}
+            </if>
+            <if test="classid!=0">
+                ,cid=#{classid}
+            </if>
+            <where>
+                id=#{id}
+            </where>
+        </if>
+    </update>
 </mapper>

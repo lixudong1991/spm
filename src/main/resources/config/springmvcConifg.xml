@@ -26,7 +26,18 @@
     <!--可以使用<mvc:annotation-driven></mvc:annotation-driven>代替下面的注解处理映射器和注解处理适配器，默认加载很多参数绑定方法，例如json转换解析器
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
-    <mvc:annotation-driven></mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+   <!--自定义参数绑定-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+      <!--转换器-->
+        <property name="converters">
+            <set>
+                <!--自定义日期参数绑定器-->
+                <bean class="cn.lxd.ctr.converter.DateCv"></bean>
+            </set>
+        </property>
+
+    </bean>
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

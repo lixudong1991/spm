@@ -13,4 +13,5 @@ public interface Studentdao {
    void insertStu(Student student)throws Exception;
    int findStuCount(Student student)throws Exception;
    List<Student> findStByids(StuIds stuIds)throws Exception;
+   void updateStubyId(Student student)throws Exception;
 }

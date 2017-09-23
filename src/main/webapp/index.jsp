@@ -9,6 +9,8 @@
 <body>
 <a href="/spm/students.action">查看所有学生信息</a><br>
 <a href="/spm/all.action">查看所有学生信息</a><br>
-<a href="stus.action">查看所有学生信息</a><br>
+<a href="/spm/stu/stus.action">查看所有学生信息</a><br>
+<a href="/spm/stu/stusa.action">查看所有学生信息</a><br>
+<a href="/spm/stu/stusb.action">查看所有学生信息</a><br>
 </body>
 </html>
