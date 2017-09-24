@@ -1,6 +1,7 @@
 package cn.lxd.service.impl;
 
 import cn.lxd.dao.Studentdao;
+import cn.lxd.entity.StuIds;
 import cn.lxd.entity.Student;
 import cn.lxd.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,40 +14,45 @@ import java.util.List;
  * Created by Tomcat on 2017/9/22.
  */
 @Component
-@Transactional
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private Studentdao studentdao;
 
     @Override
-    public List<Student> findAllStudent() {
-        try {
-            return studentdao.findStByids(null);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public List<Student> findStudentByName(StuIds stuIds) throws Exception {
+        return studentdao.findStByName(stuIds);
     }
 
     @Override
-    public void changeStudent(Integer id, Student student) {
-        try {
-            if (student != null && id != null) {
-                student.setId(id);
-                studentdao.updateStubyId(student);
+    @Transactional
+    public void changeStudents(StuIds stuIds) throws Exception {
+        if (stuIds != null) {
+            List<Student> students = stuIds.getStus();
+            if (students != null && students.size() > 0) {
+                studentdao.updateStubyIds(stuIds);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @Override
-    public Student findStudentbyId(int id) {
-        try {
-            return studentdao.findStuByid(id);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public Student findStudentbyId(int id) throws Exception {
+        return studentdao.findStuByid(id);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteStudents(StuIds stuIds) throws Exception {
+        if (stuIds != null) {
+            List<Integer> ids = stuIds.getIds();
+            if (ids == null || ids.size() == 0)
+                return;
+            studentdao.deleteStusByids(stuIds);
         }
-        return null;
+    }
+
+    @Override
+    public List<Student> findStusByids(StuIds stuIds) throws Exception {
+        return studentdao.findStusByids(stuIds);
     }
 }

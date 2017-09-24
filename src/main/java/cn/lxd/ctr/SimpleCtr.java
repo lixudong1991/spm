@@ -20,7 +20,11 @@ public class SimpleCtr implements org.springframework.web.servlet.mvc.Controller
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("students", studentService.findAllStudent());
+        try {
+            modelAndView.addObject("students", studentService.findStudentByName(null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         modelAndView.setViewName("list");
         return modelAndView;
     }

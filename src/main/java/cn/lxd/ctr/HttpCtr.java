@@ -21,7 +21,11 @@ public class HttpCtr implements HttpRequestHandler {
     @Override
     public void handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
             /*使用此方法可以通过修改response，设置响应的数据格式，例如json串*/
-        httpServletRequest.setAttribute("students", studentService.findAllStudent());
+        try {
+            httpServletRequest.setAttribute("students", studentService.findStudentByName(null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         httpServletRequest.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(httpServletRequest, httpServletResponse);
 
     }

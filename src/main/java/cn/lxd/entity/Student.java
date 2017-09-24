@@ -1,32 +1,36 @@
 package cn.lxd.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
  * Created by Tomcat on 2017/9/20.
  */
 public class Student {
-    private int id;
-    private int number;
+    private Integer id;
+    @NotNull(message = "{student.number.null.error}")
+    private Integer number;
+    @Size(min = 1,max = 20,message = "{student.name.length.error}")
     private String name;
     private Date birthday;
     private int age;
     private String sex;
     private int classid;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 

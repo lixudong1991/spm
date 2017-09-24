@@ -11,7 +11,9 @@ import java.util.List;
 public interface Studentdao {
    Student findStuByid(int id)throws Exception;
    void insertStu(Student student)throws Exception;
-   int findStuCount(Student student)throws Exception;
-   List<Student> findStByids(StuIds stuIds)throws Exception;
-   void updateStubyId(Student student)throws Exception;
+   int findStuCount()throws Exception;
+   List<Student> findStByName(StuIds stuIds)throws Exception;
+   void updateStubyIds(StuIds stuIds)throws Exception;
+   void deleteStusByids(StuIds stuIds)throws Exception;
+   List<Student> findStusByids(StuIds stuIds)throws Exception;
 }

@@ -12,15 +12,12 @@
         <result property="birthday" column="birthday" javaType="java.util.Date"></result>
         <result property="classid" column="cid" javaType="int"></result>
     </resultMap>
-    <sql id="byage">
-        <if test="age!=0">
-            AND age>#{age}
-        </if>
-    </sql>
-    <sql id="bycid">
-        <if test="cid!=0">
-            AND cid=#{cid}
-        </if>
+    <sql id="setids">
+        <where>
+            <foreach collection="ids" item="it" open="id in(" close=")" separator=",">
+                #{it}
+            </foreach>
+        </where>
     </sql>
     <select id="findStuByid" parameterType="int" resultMap="res">
         SELECT * FROM studb WHERE id=#{id}
@@ -30,35 +27,43 @@
         INSERT INTO studb(number,name,age,sex,birthday,cid) VALUES (#{number},#{name},#{age},#{sex},#{birthday},#{cid})
     </insert>
 
-    <select id="findStuCount" parameterType="Student" resultType="int">
+    <select id="findStuCount"  resultType="int">
         SELECT COUNT(*) FROM studb
-        <where>
-            <include refid="byage"></include>
-            <include refid="bycid"></include>
-        </where>
     </select>
-    <select id="findStByids" parameterType="StuIds" resultMap="res">
+    <select id="findStByName" parameterType="StuIds" resultMap="res">
         SELECT * FROM studb
         <where>
-            <if test="ids!=null">
-                <foreach collection="ids" item="it" open="id in(" close=")" separator=",">
-                    #{it}
-                </foreach>
+            <if test="student!=null">
+                <if test="student.name!=null and student.name !=''">
+                    name LIKE '%${student.name}%'
+                </if>
             </if>
         </where>
     </select>
-    <update id="updateStubyId" parameterType="Student">
-        <if test="number!=0 and name !=null and name!=''">
-            UPDATE studb SET number=#{number},name=#{name},age=#{age},sex=#{sex}
-            <if test="birthday!=null">
-                ,birthday=#{birthday}
-            </if>
-            <if test="classid!=0">
-                ,cid=#{classid}
-            </if>
-            <where>
-                id=#{id}
-            </where>
-        </if>
+    <update id="updateStubyIds" parameterType="Stuids">
+            <foreach collection="stus" item="it" separator=";">
+                    UPDATE studb SET `number`=#{it.number}, `name`=#{it.name},`age`=#{it.age},`sex`=#{it.sex}
+                    <if test="it.birthday!=null">
+                        ,birthday=#{it.birthday}
+                    </if>
+                    <if test="it.classid!=0">
+                        ,cid=#{it.classid}
+                    </if>
+                    <where>
+                        id=#{it.id}
+                    </where>
+            </foreach>
     </update>
+    <delete id="deleteStusByids" parameterType="StuIds">
+        DELETE FROM studb
+        <if test="ids!=null">
+            <include refid="setids"></include>
+        </if>      
+    </delete>
+    <select id="findStusByids" parameterType="StuIds" resultMap="res">
+        SELECT * FROM studb
+        <if test="ids!=null">
+            <include refid="setids"></include>
+        </if>
+    </select>
 </mapper>
