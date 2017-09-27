@@ -48,6 +48,7 @@
 </head>
 <body>
 <div style="margin:0 auto;width:1000px">
+    <p>当前用户:${user.username}   <a href="/spm/log/logout.action">退出登录</a></p>
     <c:if test="${!empty requestScope.students }">
         <form  action="/spm/stu/editsubmit.action" method="post">
             <div style="float:left;width:1000px">

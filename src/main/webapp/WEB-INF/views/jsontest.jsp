@@ -12,7 +12,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>jsontest</title>
-    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script>
         $(document).ready(function(){
             $("#id").bind('input propertychange', function() {
@@ -34,9 +34,9 @@
         //请求key/value，响应json
         function responsejson() {
             $.ajax({
-                type: 'post',
-                url:'${pageContext.request.contextPath}/responsejson.action',
-                data:'id='+$("#id").val(),
+                type: 'get',
+                url:'${pageContext.request.contextPath}/responsejson/'+$("#id").val(),
+               // data:'id='+$("#id").val(),
                 success:function (data) {
                   setPro(data);
                 }
@@ -53,7 +53,7 @@
     </script>
 </head>
 <body>
-
+<p>当前用户:${user.username}   <a href="/spm/log/logout.action">退出登录</a></p>
 <input type="text" value="请输入查询的学生id" onfocus="this.value=''" id="id">
 <input type="button" onclick="requestjson()" value="请求json，响应json"/>
 <input type="button" onclick="responsejson()" value="请求key/value，响应json"/><br/>

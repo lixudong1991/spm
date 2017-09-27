@@ -70,4 +70,20 @@
             </list>
         </property>
     </bean>
+
+    <mvc:interceptors>
+        <!--可以配置多个拦截器，顺序执行，拦截器应该按照严格程度先后配置，越严格的越在最后-->
+        <!--登录认证拦截器-->
+        <mvc:interceptor>
+            <!-- path=/** 表示拦截所有URL路径-->
+            <mvc:mapping path="/**"/>
+            <bean class="cn.lxd.intercept.LoginItcp"></bean>
+        </mvc:interceptor>
+       <!-- <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean></bean>
+        </mvc:interceptor>-->
+    </mvc:interceptors>
+
+    <!--<mvc:resources mapping="/jsp/" location="/jsp/**"></mvc:resources>-->
 </beans>

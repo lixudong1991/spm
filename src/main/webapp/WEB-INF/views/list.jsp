@@ -62,6 +62,7 @@
 </head>
 <body>
 <div style="margin:0 auto;width:1000px">
+    <p>当前用户:${user.username}   <a href="/spm/log/logout.action">退出登录</a></p>
     <c:if test="${empty requestScope.students}">
         <span style="font-size: 15px"><a href="index.jsp">没有学生信息</a></span>
     </c:if>
@@ -107,7 +108,7 @@
                 <a href="emp"><span style="font-size: 20px">下一页</span></a>
                 <a href="emp"><span style="font-size: 20px">上一页</span></a>
                 <a href="emp"><span style="font-size: 20px">末页</span></a>
-                <a href="emp"><span style="font-size: 20px">末页</span></a>
+                <a href="/spm/stu/findstu.action"><span style="font-size: 20px">查询</span></a>
                 <a href="/spm/stu/edit.action?id=13"><span style="font-size: 20px">编辑</span></a>
             </div>
         </form>

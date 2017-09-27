@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lxd.dao.UserDao">
+    <select id="getUserByNameAndPass" parameterType="User" resultType="User">
+        SELECT * FROM usr WHERE username=#{username} AND password=#{password}
+    </select>
+    <select id="getUserByName" parameterType="java.lang.String" resultType="User">
+        SELECT * FROM usr WHERE username=#{value}
+    </select>
+    <insert id="addUsers"  parameterType="Users">
+        INSERT INTO usr(username,password,auth) VALUES
+        <foreach collection="userList" item="it" separator=",">
+            (#{it.username},#{it.password},#{it.auth})
+        </foreach>
+    </insert>
+</mapper>

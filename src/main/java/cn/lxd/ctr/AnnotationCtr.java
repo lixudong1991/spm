@@ -122,6 +122,9 @@ public class AnnotationCtr {
         studentService.deleteStudents(stuIds);
         return "redirect:stus.action";
     }
-
+    @RequestMapping(value = "/findstu")
+    public String findstu(){
+        return "jsontest";
+    }
 
 }
