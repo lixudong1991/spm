@@ -103,7 +103,7 @@
                 </ul>
             </div>
             <div style="float:left;width:1000px;text-align:center">
-                <a href="emp"><span style="font-size: 20px">增加学生信息</span></a>
+                <a href="/spm/stu/addstu.action"><span style="font-size: 20px">增加学生信息</span></a>
                 <a href="emp"><span style="font-size: 20px">首页</span></a>
                 <a href="emp"><span style="font-size: 20px">下一页</span></a>
                 <a href="emp"><span style="font-size: 20px">上一页</span></a>

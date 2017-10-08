@@ -56,4 +56,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findStusByids(StuIds stuIds) throws Exception {
         return studentdao.findStusByids(stuIds);
     }
+
+    @Override
+    public void addStu(Student student) throws Exception {
+        studentdao.insertStu(student);
+    }
 }

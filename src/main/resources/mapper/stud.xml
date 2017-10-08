@@ -24,7 +24,7 @@
     </select>
     <!--插入数据并获取主键值-->
     <insert id="insertStu" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
-        INSERT INTO studb(number,name,age,sex,birthday,cid) VALUES (#{number},#{name},#{age},#{sex},#{birthday},#{cid})
+        INSERT INTO studb(number,name,age,sex,birthday,cid) VALUES (#{number},#{name},#{age},#{sex},#{birthday},#{classid})
     </insert>
 
     <select id="findStuCount"  resultType="int">

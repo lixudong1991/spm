@@ -21,7 +21,7 @@
     <form id="regform" method="post">
         <div class="c2">
             <div class="c1">
-               <input id="name" ype="text" name="username" class="c3"
+               <input id="name" type="text" name="username" class="c3"
                        maxlength="20"/>
             </div>
             <div style="width: 300px;height:18px">

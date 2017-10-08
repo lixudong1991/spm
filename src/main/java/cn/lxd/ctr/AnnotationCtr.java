@@ -127,4 +127,14 @@ public class AnnotationCtr {
         return "jsontest";
     }
 
+    @RequestMapping(value = "/addstu")
+    public String addStu(){
+        return "addstu";
+    }
+    @RequestMapping(value = "/addStusubmit")
+    public String addStusubmit(@Validated Student student, BindingResult bindingResult) throws Exception {
+        studentService.addStu(student);
+        return "redirect:stusa.action";
+    }
+
 }

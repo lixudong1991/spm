@@ -46,7 +46,7 @@ public class LoginCtr {
         request.getRequestDispatcher("/login.jsp").forward(request, response);
     }
 
-    @RequestMapping(value = "/reg.action")
+    @RequestMapping(value = "/reg.action",method = RequestMethod.POST)
     @ResponseBody
     public Logstatus reg(User user) throws Exception {
         Logstatus logstatus = new Logstatus();
@@ -66,7 +66,7 @@ public class LoginCtr {
         return logstatus;
     }
 
-    @RequestMapping(value = "/isregUsername.action")
+    @RequestMapping(value = "/isregUsername.action",method = RequestMethod.POST)
     @ResponseBody
     public Logstatus isregUsername(String username) throws Exception {
         Logstatus logstatus = new Logstatus();

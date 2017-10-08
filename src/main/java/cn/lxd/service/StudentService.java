@@ -14,4 +14,5 @@ public interface StudentService {
     Student findStudentbyId(int id) throws Exception;
     void deleteStudents(StuIds stuIds) throws Exception;
     List<Student> findStusByids(StuIds stuIds)throws Exception;
+    void addStu(Student student)throws Exception;
 }
